@@ -9,7 +9,7 @@
   </head>
   <style>
     a {
-      transition: 600ms ease;
+      transition: 600ms;
     }
     .blue {
       color: blue;
@@ -23,68 +23,32 @@
       margin: 10px;
       font-size: 30px;
     }
+    .butn1 {
+      background: red;
+      color: black;
+      width: 400px;
+      height: 200px;
+      border-radius: 5px;
+      margin: 20px;
+      font-size: 30px;
+    }
+    button {
+      transition: 600ms;
+    }
+    .butn2 {
+      transition: 600ms;
+      width: 100px;
+      height: 50px;
+      border-radius: 5px;
+    }
   </style>
   <body>
     <h1><strong><a href="./HTMl-L1/index.html">Hello!</a></strong></h1>
     <p>Would you really click on the link above? Why not me?</p>
     <button type="button" id="rnd">Random Button</button>
+    <button type="button" id="hide"><a href="https://viratwiz.com">My Website</a></button>
     <div id="random">
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
-    <button type="button" id="hide">Button</button>
+    <butn type="button" id="website" class="butn2">Button</butn>
     </div>
     <script type="text/javascript">
     jQuery.fn.extend({
@@ -95,35 +59,39 @@
         if (isClicked) { that.text(a); isClicked = false; }
         else { that.text(b); isClicked = true; }});
           return this;}
+    });
+    var body = $('a');
+    var colors = ['red', 'green', 'blue', 'yellow', 'pink', 'purple'];
+    var currentIndex = 0;
+    setInterval(function () {
+      body.css({
+        color: colors[currentIndex]
       });
-      var body = $('a');
-      var colors = ['red', 'green', 'blue', 'yellow', 'pink', 'purple'];
-      var currentIndex = 0;
-      setInterval(function () {
-         body.css({
-           color: colors[currentIndex]
-         });
-         if (!colors[currentIndex]) {
-             currentIndex = 0;
-         } else {
-             currentIndex++;
-         }
-      }, 800);
-      $('p').click(function(){
-        $('p').text("Why did you click me again?");
-        $('p').animate({margin: "10px"});
-      })
-      $("#random").toggle();
+      if (!colors[currentIndex]) {
+        currentIndex = 0;
+      } else {
+         currentIndex++;
+      }
+    }, 800);
+    $('p').click(function(){
+      $('p').text("Why did you click me again?");
+      $('p').animate({margin: "10px"});
+    })
+    $("#random").fadeToggle();
+    $("#rnd").toggleClass("butn");
+    $("#rnd").toggleText("Random Button", "more random button");
+    $("#rnd").click(function(){
+      $("p").toggleClass("blue");
       $("#rnd").toggleClass("butn");
-      $("#rnd").toggleText("Random Button", "more random button");
-      $("#rnd").click(function(){
-        $("p").toggleClass("blue");
-        $("#rnd").toggleClass("butn");
-        $("#random").toggle();
-      });
-      $("button").click(function(){
-        $(this).toggleClass("butn");
-      })
+      $("#random").fadeToggle();
+    });
+    $("button").click(function(){
+      $(this).toggleClass("butn");
+    })
+    $("butn").click(function() {
+      $(this).toggleClass("butn1");
+      $(this).toggleClass("butn2");
+    })
     </script>
   </body>
 </html>
